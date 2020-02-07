@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('audio-player', require('./components/Player/PlayerComponent.vue').default);
+Vue.component('playlist', require('./components/Playlist/PlaylistComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

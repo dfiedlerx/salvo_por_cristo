@@ -11,6 +11,7 @@
                 </div>
             </div>
         </div>
+        <audio-player></audio-player>
     </div>
 </template>
 

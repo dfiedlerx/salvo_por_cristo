@@ -8,7 +8,7 @@
     </head>
     <body>
         <div id="app">
-            <audio-player></audio-player>
+            <playlist></playlist>
         </div>
     </body>
     <script src="js/app.js"></script>

@@ -82,7 +82,6 @@
         </svg>
     </div>
 
-
 </template>
 
 <style scopped>
