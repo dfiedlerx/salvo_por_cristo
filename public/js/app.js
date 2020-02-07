@@ -2451,7 +2451,7 @@ __webpack_require__.r(__webpack_exports__);
         name: "José Ferreira",
         artist: "Pastor",
         cover: "https://scontent.fplu3-1.fna.fbcdn.net/v/t1.0-9/32378529_1797984020258145_3897478320547168256_n.jpg?_nc_cat=111&_nc_ohc=pH39175ADaYAX_3GdsX&_nc_ht=scontent.fplu3-1.fna&oh=49c7510b3e76c342b30e3637165259fd&oe=5EC7A69E",
-        source: "/audio/WhatsApp Audio 2020-01-29 at 00.12.08.mpeg",
+        source: "/file",
         url: "/audio/WhatsApp Audio 2020-01-29 at 00.12.08.mpeg",
         favorited: true
       }],
@@ -2601,11 +2601,8 @@ __webpack_require__.r(__webpack_exports__);
       }, 300);
     },
     changeTime: function changeTime(change) {
-      if (!this.audio.currentTime) {
-        this.audio.currentTime = 0;
-      }
-
-      this.audio.currentTime = (this.audio.currentTime + change).toString();
+      this.audio.play();
+      this.audio.currentTime = this.audio.currentTime + change;
     },
     favorite: function favorite() {
       this.tracks[this.currentTrackIndex].favorited = !this.tracks[this.currentTrackIndex].favorited;
