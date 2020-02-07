@@ -84,7 +84,7 @@
 
 </template>
 
-<style scopped>
+<style scoped>
     body {
         background: #dfe7ef;
         font-family: "Bitter", serif;
