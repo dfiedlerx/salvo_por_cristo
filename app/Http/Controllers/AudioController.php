@@ -10,9 +10,19 @@ use Illuminate\Support\Facades\Response;
 class AudioController extends Controller
 {
 
-    public function get () {
+    public function get ($audioName) {
 
-        return $this->streamFile("audio/mp3", dirname(__FILE__) . '/../../../public/audio/WhatsApp Audio 2020-01-29 at 00.12.08.mpeg');
+        return $this->streamFile("audio/mp3", dirname(__FILE__) . '/../../../public/audio/' . $audioName);
+
+    }
+
+    public function download ($audioName) {
+
+        $headers = array(
+            'Content-Type: audio/mp3',
+        );
+
+        return Response::download(dirname(__FILE__) . '/../../../public/audio/' . $audioName, $audioName.'.mp3', $headers);
 
     }
 

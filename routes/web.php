@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/file', 'AudioController@get')->name('file');
+Route::get('/file/{audioName}', 'AudioController@get')->name('file');
+Route::get('/file/download/{audioName}', 'AudioController@download')->name('file');
