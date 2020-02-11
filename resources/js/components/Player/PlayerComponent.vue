@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="total-center">
         <div class="player">
 
             <div class="player__top">
@@ -46,7 +46,8 @@
                     <i class="fa fa-refresh" style="font-size: 20px;" aria-hidden="true"></i>
                 </div>
             </div>
-            <div class="progress" ref="progress">
+            <div class="clearfix"></div>
+            <div class="progress-content" ref="progress">
                 <div class="progress__top">
                     <div class="album-info" v-if="currentTrack">
                         <div class="album-info__name"  v-text="currentTrack.artist"></div>
@@ -320,7 +321,7 @@
         display: none;
     }
 
-    .progress {
+    .progress-content {
         width: 100%;
         margin-top: -15px;
         user-select: none;
@@ -592,7 +593,13 @@
             clickProgress(e) {
                 this.isTimerPlaying = true;
                 this.audio.pause();
-                this.updateBar(e.pageX);
+                console.log($('.player').offset().left);
+                console.log(e.pageX - $('.player').offset().left);
+                let barPosition = e.pageX - $('.player').offset().left;
+                barPosition = barPosition > 0 ? barPosition : (barPosition * -1);
+                console.log(barPosition);
+                this.updateBar(e.pageX - $('.player').offset().left);
+
             },
             prevTrack() {
 
