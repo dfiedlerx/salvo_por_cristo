@@ -7,9 +7,6 @@
             <div class="col-12 col-md-5 screen-height">
                 <audio-player></audio-player>
             </div>
-
-
-
         </div>
 
     </div>

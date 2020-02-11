@@ -2550,12 +2550,7 @@ __webpack_require__.r(__webpack_exports__);
     clickProgress: function clickProgress(e) {
       this.isTimerPlaying = true;
       this.audio.pause();
-      console.log($('.player').offset().left);
-      console.log(e.pageX - $('.player').offset().left);
-      var barPosition = e.pageX - $('.player').offset().left;
-      barPosition = barPosition > 0 ? barPosition : barPosition * -1;
-      console.log(barPosition);
-      this.updateBar(e.pageX - $('.player').offset().left);
+      this.updateBar(e.pageX - $(this.$refs.player).offset().left);
     },
     prevTrack: function prevTrack() {
       if (this.tracks.length < 2) {
@@ -2572,7 +2567,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.currentTrack = this.tracks[this.currentTrackIndex];
-      this.resetPlayer();
+      this.resetPlayer(true);
     },
     nextTrack: function nextTrack() {
       if (this.tracks.length < 2) {
@@ -2589,15 +2584,20 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.currentTrack = this.tracks[this.currentTrackIndex];
-      this.resetPlayer();
+      this.resetPlayer(true);
     },
     resetPlayer: function resetPlayer() {
       var _this = this;
 
+      var redefineAudio = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       this.barWidth = 0;
       this.circleLeft = 0;
       this.audio.currentTime = 0;
-      this.audio.src = this.currentTrack.source;
+
+      if (redefineAudio) {
+        this.audio.src = this.currentTrack.source;
+      }
+
       setTimeout(function () {
         if (_this.isTimerPlaying) {
           _this.audio.play();
@@ -2630,9 +2630,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -38732,7 +38729,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "total-center" }, [
-    _c("div", { staticClass: "player" }, [
+    _c("div", { ref: "player", staticClass: "player" }, [
       _c("div", { staticClass: "player__top" }, [
         _c(
           "div",

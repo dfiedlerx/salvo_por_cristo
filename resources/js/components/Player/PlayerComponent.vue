@@ -1,6 +1,6 @@
 <template>
     <div class="total-center">
-        <div class="player">
+        <div class="player" ref="player">
 
             <div class="player__top">
                 <div class="player-cover">
@@ -591,14 +591,10 @@
                 this.audio.play();
             },
             clickProgress(e) {
+
                 this.isTimerPlaying = true;
                 this.audio.pause();
-                console.log($('.player').offset().left);
-                console.log(e.pageX - $('.player').offset().left);
-                let barPosition = e.pageX - $('.player').offset().left;
-                barPosition = barPosition > 0 ? barPosition : (barPosition * -1);
-                console.log(barPosition);
-                this.updateBar(e.pageX - $('.player').offset().left);
+                this.updateBar(e.pageX - $(this.$refs.player).offset().left);
 
             },
             prevTrack() {
@@ -617,7 +613,7 @@
                     this.currentTrackIndex = this.tracks.length - 1;
                 }
                 this.currentTrack = this.tracks[this.currentTrackIndex];
-                this.resetPlayer();
+                this.resetPlayer(true);
             },
             nextTrack() {
 
@@ -636,13 +632,19 @@
                     this.currentTrackIndex = 0;
                 }
                 this.currentTrack = this.tracks[this.currentTrackIndex];
-                this.resetPlayer();
+                this.resetPlayer(true);
             },
-            resetPlayer() {
+            resetPlayer(redefineAudio = false) {
                 this.barWidth = 0;
                 this.circleLeft = 0;
                 this.audio.currentTime = 0;
-                this.audio.src = this.currentTrack.source;
+
+                if (redefineAudio) {
+
+                    this.audio.src = this.currentTrack.source;
+
+                }
+
                 setTimeout(() => {
                     if(this.isTimerPlaying) {
                         this.audio.play();
