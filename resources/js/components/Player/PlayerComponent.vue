@@ -490,6 +490,7 @@
 
 <script>
     export default {
+        props : ['audios'],
         data() {
             return {
                 audio: null,
@@ -498,16 +499,7 @@
                 duration: null,
                 currentTime: null,
                 isTimerPlaying: false,
-                tracks: [
-                    {
-                        name: "José Ferreira",
-                        artist: "Pastor",
-                        cover: "https://scontent.fplu3-1.fna.fbcdn.net/v/t1.0-9/32378529_1797984020258145_3897478320547168256_n.jpg?_nc_cat=111&_nc_ohc=pH39175ADaYAX_3GdsX&_nc_ht=scontent.fplu3-1.fna&oh=49c7510b3e76c342b30e3637165259fd&oe=5EC7A69E",
-                        source: "/file/WhatsApp Audio 2020-01-29 at 00.12.08.mpeg",
-                        url: "/file/download/WhatsApp Audio 2020-01-29 at 00.12.08.mpeg",
-                        favorited: true
-                    }
-                ],
+                tracks: this.audios,
                 currentTrack: null,
                 currentTrackIndex: 0,
                 transitionName: null
@@ -537,7 +529,7 @@
                     let link = document.createElement('link');
                     link.rel = "prefetch";
                     link.href = element.cover;
-                    link.as = "image"
+                    link.as = "image";
                     document.head.appendChild(link)
                 }
 
@@ -663,12 +655,40 @@
                 this.tracks[this.currentTrackIndex].favorited = !this.tracks[
                     this.currentTrackIndex
                     ].favorited;
-            }
+            },
         },
         created() {
 
             this.create();
 
+        },
+        watch: {
+            'audios' : function(newVal, oldVal) { // watch it
+
+                if (newVal != oldVal) {
+
+                    this.tracks = newVal;
+                    this.currentTrack = this.tracks[0];
+                    this.audio.src = this.currentTrack.source;
+                    this.currentTrack.cover = this.tracks[0].cover;
+                    this.currentTrackIndex = 0;
+
+                    // this is optional (for preload covers)
+                    for (let index = 0; index < this.tracks.length; index++) {
+                        const element = this.tracks[index];
+                        let link = document.createElement('link');
+                        link.rel = "prefetch";
+                        link.href = element.cover;
+                        link.as = "image";
+                        document.head.appendChild(link)
+                    }
+
+                    this.resetPlayer(true);
+                    this.create();
+
+                }
+
+            }
         }
 
     }
