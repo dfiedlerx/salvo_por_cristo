@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
         <script src="https://kit.fontawesome.com/554cc3467f.js" crossorigin="anonymous"></script>
-        <title>Laravel</title>
+        <title>Somente as Escrituras</title>
     </head>
     <body>
         <div id="app">

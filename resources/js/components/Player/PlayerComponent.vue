@@ -10,12 +10,12 @@
                 </div>
                 <div class="player-controls">
                     <div class='icon-player-content'>
-                        <div class="player-controls__item -favorite" :class="{ active : currentTrack.favorited }" @click="favorite">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </div>
                         <a :href="currentTrack.url" target="_blank" class="player-controls__item">
                             <i class="fa fa-download" aria-hidden="true"></i>
                         </a>
+                        <div class="player-controls__item -favorite">
+                            <i class="fa fa-share" aria-hidden="true"></i>
+                        </div>
                         <div class="player-controls__item" @click="prevTrack">
                             <i class="fa fa-angle-left" aria-hidden="true"></i>
                         </div>
@@ -647,14 +647,8 @@
             },
             changeTime (change) {
 
-                this.audio.play();
                 this.audio.currentTime = this.audio.currentTime + change;
 
-            },
-            favorite() {
-                this.tracks[this.currentTrackIndex].favorited = !this.tracks[
-                    this.currentTrackIndex
-                    ].favorited;
             },
         },
         created() {
