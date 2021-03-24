@@ -12,7 +12,7 @@ class AudioController extends Controller
 
     public function get ($audioName) {
 
-        return $this->streamFile("audio/mp3", dirname(__FILE__) . '/../../../public/audio/' . $audioName);
+        return $this->streamFile("audio/mp3", dirname(__FILE__) . '/../../../public/audios/' . $audioName);
 
     }
 
@@ -22,7 +22,7 @@ class AudioController extends Controller
             'Content-Type: audio/mp3',
         );
 
-        return Response::download(dirname(__FILE__) . '/../../../public/audio/' . $audioName, $audioName.'.mp3', $headers);
+        return Response::download(dirname(__FILE__) . '/../../../public/audios/' . $audioName, $audioName.'.mp3', $headers);
 
     }
 

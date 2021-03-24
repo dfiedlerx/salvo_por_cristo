@@ -1,29 +1,29 @@
 <template>
     <div class="container-fluid">
         <div class="row">
+            <div class="col-12 col-xs-12 playlist-header">
+                <div class="row logo-content">
+                    <div>
+                        <img data-v-9b01884e="" src="/imgs/escrituras.png" class="logo-img">
+                    </div>
+                    <div class="logo-text">
+                        Somente as Escrituras
+                    </div>
+
+                </div>
+                <div class="pull-right search-icon" @click="change">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+            </div>
             <div class="col-12 col-xs-12 col-md-7 screen-height">
                 <div class="row">
-                    <div class="col-12 col-xs-12 playlist-header">
-                        <div class="row logo-content">
-                            <div>
-                                <img data-v-9b01884e="" src="/imgs/escrituras.png" class="logo-img">
-                            </div>
-                            <div class="logo-text">
-                                Somente as Escrituras
-                            </div>
-
-                        </div>
-                        <div class="pull-right search-icon" @click="change">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                    </div>
                     <div class="col-12 col-xs-12">
 
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-5 screen-height player-place">
-                <audio-player :audios="test"></audio-player>
+                <audio-player :audios="playlist"></audio-player>
             </div>
         </div>
         <div class="para-Ele">
@@ -36,7 +36,7 @@
 
     .player-place {
 
-        background-color: #f5f5f5;
+        background-color: #eae8e8;
 
     }
 
@@ -90,46 +90,54 @@
 
     }
 
+    .screen-height {
+
+        height: initial;
+        min-height: calc(100vh - 60px);
+
+    }
+
 </style>
 
 <script>
     export default {
         data: function () {
             return {
-                test :
+                playlist :
                 [
-                    {
-                        name: "José Ferreira",
-                        artist: "Pastor",
-                        cover: "https://scontent.fplu3-1.fna.fbcdn.net/v/t1.0-9/32378529_1797984020258145_3897478320547168256_n.jpg?_nc_cat=111&_nc_ohc=pH39175ADaYAX_3GdsX&_nc_ht=scontent.fplu3-1.fna&oh=49c7510b3e76c342b30e3637165259fd&oe=5EC7A69E",
-                        source: "/file/WhatsApp Audio 2020-01-29 at 00.12.08.mpeg",
-                        url: "/file/download/WhatsApp Audio 2020-01-29 at 00.12.08.mpeg",
-                        favorited: true
-                    }
-                ]
-            }
-        },
-        methods: {
-            change () {
-                this.test = [
                     {
                         name: "Split",
                         artist: "Seconds Away",
                         cover: "https://i.scdn.co/image/ab67616d0000b2733ff758754da9f449e24c5176",
-                        source: "/file/Seconds Away - Split [HD].mp3",
-                        url: "/file/download/Seconds Away - Split [HD].mp3",
+                        source: "/audio/Seconds Away - Split [HD].mp3",
+                        url: "/audio/download/Seconds Away - Split [HD].mp3",
                         favorited: true
                     },
                     {
                         name: "Nice Try",
                         artist: "Nevertel",
                         cover: "https://i1.sndcdn.com/avatars-000718395724-ry50ph-t500x500.jpg",
-                        source: "/file/Nevertel - Nice Try [HD].mp3",
-                        url: "/file/download/Nevertel - Nice Try [HD].mp3",
+                        source: "/audio/Nevertel - Nice Try [HD].mp3",
+                        url: "/audio/download/Nevertel - Nice Try [HD].mp3",
                         favorited: true
                     }
                 ]
 
+            }
+        },
+        methods: {
+            change () {
+                this.playlist =
+                [
+                    {
+                        name: "José Ferreira",
+                        artist: "Pastor",
+                        cover: "https://www.dioceseunivitoria.org.br/wp-content/uploads/2018/09/biblia.jpg",
+                        source: "/audio/WhatsApp Audio 2020-01-29 at 00.12.08.mpeg",
+                        url: "/audio/download/WhatsApp Audio 2020-01-29 at 00.12.08.mpeg",
+                        favorited: true
+                    }
+                ]
             }
         }
 

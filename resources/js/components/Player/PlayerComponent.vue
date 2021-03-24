@@ -579,7 +579,7 @@
                 }
                 this.barWidth = percentage + "%";
                 this.circleLeft = percentage + "%";
-                this.audio.currentTime = (maxduration * percentage) / 100;
+                this.audio.currentTime = ((maxduration * percentage) / 100);
                 this.audio.play();
             },
             clickProgress(e) {
@@ -659,7 +659,7 @@
         watch: {
             'audios' : function(newVal, oldVal) { // watch it
 
-                if (newVal != oldVal) {
+                if (newVal !== oldVal) {
 
                     this.tracks = newVal;
                     this.currentTrack = this.tracks[0];
